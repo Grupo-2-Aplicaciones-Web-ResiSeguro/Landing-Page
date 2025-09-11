@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ResiCare | Microinsurance for students & parents</title>
+  <meta name="description" content="Protect your belongings and peace of mind with microinsurance designed for students and parents. Quick signup, photo claims and reliable digital support." />
+  <meta name="keywords" content="microinsurance, student insurance, digital insurance, ResiCare, ResiSeguro" />
+  <meta name="author" content="ResiSeguro Startup" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="./assets/logo-upc.png" type="image/png">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  
+  <header role="banner" aria-label="Main header">
+    <div class="container nav" role="navigation" aria-label="Main navigation">
+      <div class="brand">
+        <img src="./assets/logo-upc.png" alt="ResiCare logo">
+        <h1>ResiCare</h1>
+      </div>
+
+      <nav aria-label="Primary navigation">
+        <ul>
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="about.html">Meet the team</a></li>
+          <li><a href="index.html#benefits">Benefits</a></li>
+          <li><a href="index.html#plans">Plans</a></li>
+          <li><a href="index.html#simulator">Simulator</a></li>
+          <li><a href="index.html#videos">Videos</a></li>
+        </ul>
+      </nav>
+
+      <div style="display:flex;gap:10px;align-items:center">
+        <button class="btn-ghost" aria-label="Sign in" onclick="alert('Demo: Sign in')">Sign in</button>
+        <button class="btn-primary" id="cta-subscribe" onclick="openContractModal('Basic',9.9)">Subscribe</button>
+        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" onclick="toggleMobileMenu(this)">☰</button>
+      </div>
+    </div>
+
+    <div id="mobile-menu" style="display:none;background:var(--white);border-top:1px solid #eef2f7">
+      <div class="container" style="padding:12px 0">
+        <ul style="display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="about.html">Meet the team</a></li>
+          <li><a href="index.html#benefits">Benefits</a></li>
+          <li><a href="index.html#plans">Plans</a></li>
+          <li><a href="index.html#simulator">Simulator</a></li>
+          <li><a href="index.html#videos">Videos</a></li>
+          <li><a href="terms.html">Terms & Recommendations</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  
+  <main id="home" class="container" role="main">
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-left">
+        <span class="eyebrow">New • Fast microinsurance</span>
+        <h2 id="hero-title">Protect what matters during your university life</h2>
+        <p>Quick, affordable microinsurance for students and parents. Easy signup, photo-based claims, and fast support.</p>
+
+        <div class="hero-ctas">
+          <button class="btn-primary" onclick="scrollToSection('#plans')">View Plans</button>
+          <button class="btn-ghost" onclick="scrollToSection('#simulator')">Simulate Premium</button>
+        </div>
+
+        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="width:44px;height:44px;border-radius:10px;background:rgba(30,58,138,0.06);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue)">✓</div>
+            <div>
+              <div style="font-weight:700">Fast claims</div>
+              <div class="small">Automatic decisions for minor incidents.</div>
+            </div>
+          </div>
+
+          <div class="card" style="display:flex;gap:12px;align-items:center">
+            <div style="width:44px;height:44px;border-radius:10px;background:rgba(16,185,129,0.06);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green)">★</div>
+            <div>
+              <div style="font-weight:700">Flexible plans</div>
+              <div class="small">Student-friendly prices and coverage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="hero-illustration" aria-hidden="true">
+        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Students illustration">
+      </aside>
+    </section>
+
+    <!-- BENEFITS -->
+    <section id="benefits" style="margin-top:18px">
+      <h3 class="section-title">Benefits</h3>
+      <div class="grid-3">
+        <div class="card">
+          <h4>Affordable protection</h4>
+          <p class="small">Plans designed for student budgets with clear coverage limits and no hidden costs.</p>
+        </div>
+        <div class="card">
+          <h4>Quick online claims</h4>
+          <p class="small">Submit a photo and details — get an automated decision for small claims or human review when needed.</p>
+        </div>
+        <div class="card">
+          <h4>Digital peace of mind</h4>
+          <p class="small">Manage policies, claims, and contact support through the app and web portal.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PLANS -->
+    <section id="plans" aria-labelledby="plans-title" style="margin-top:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h2 id="plans-title" class="section-title">Plans</h2>
+        <div class="badge">From S/ 9.90 / month</div>
+      </div>
+
+      <div class="plans" role="list" aria-label="Available plans">
+        <article class="plan" role="listitem" aria-labelledby="plan-basic">
+          <h3 id="plan-basic">Basic Plan</h3>
+          <div class="price">S/ 9.90 <span style="font-size:0.85rem;font-weight:500;color:var(--muted)">/ month</span></div>
+          <p class="small">Essential coverage for gadgets, backpack and basic assistance.</p>
+          <ul>
+            <li>Small-theft protection</li>
+            <li>Photo claims</li>
+            <li>Basic teleconsult support</li>
+          </ul>
+          <div class="plan-cta">
+            <button class="btn-primary" onclick="openContractModal('Basic',9.9)">Subscribe</button>
+            <a class="btn-ghost" href="about.html" style="margin-left:8px;display:inline-flex;align-items:center">Meet the team</a>
+          </div>
+        </article>
+
+        <article class="plan" role="listitem" aria-labelledby="plan-premium">
+          <h3 id="plan-premium">Premium Plan</h3>
+          <div class="price">S/ 24.90 <span style="font-size:0.85rem;font-weight:500;color:var(--muted)">/ month</span></div>
+          <p class="small">Higher coverage limits and priority claim handling.</p>
+          <ul>
+            <li>Higher limits per incident</li>
+            <li>Priority processing</li>
+            <li>Partial damage reimbursement</li>
+          </ul>
+          <div class="plan-cta">
+            <button class="btn-primary" onclick="openContractModal('Premium',24.9)">Subscribe</button>
+            <a class="btn-ghost" href="terms.html" style="margin-left:8px;display:inline-flex;align-items:center">Terms & recommendations</a>
+          </div>
+        </article>
+
+        <article class="plan" role="listitem" aria-labelledby="plan-faq">
+          <h3 id="plan-faq">Not sure yet?</h3>
+          <div style="font-weight:600;color:var(--muted);margin:6px 0">Try the simulator or contact support</div>
+          <div class="simulator" id="simulator" aria-labelledby="sim-title">
+            <h4 id="sim-title" style="margin:0 0 8px;font-family:'Poppins',sans-serif;color:var(--blue)">Quick simulator</h4>
+            <label for="valor">Item value (S/)</label>
+            <input id="valor" type="number" class="input" min="10" value="1000" />
+            <label for="plan-select">Choose plan</label>
+            <select id="plan-select" class="input" aria-label="Choose a plan for simulation">
+              <option value="9.9">Basic - S/ 9.90</option>
+              <option value="24.9">Premium - S/ 24.90</option>
+            </select>
+            <label for="meses">Duration (months)</label>
+            <input id="meses" type="number" class="input" min="1" max="12" value="1" />
+            <div style="display:flex;gap:10px;align-items:center">
+              <button class="btn-primary" onclick="runSimulator()">Calculate</button>
+              <button class="btn-ghost" onclick="resetSimulator()">Reset</button>
+            </div>
+            <div id="sim-result" style="margin-top:12px" aria-live="polite"></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- VIDEOS -->
+    <section id="videos" style="margin-top:24px">
+      <h3 class="section-title">Videos</h3>
+      <div class="grid-3">
+        <!-- About the Product -->
+<div class="card">
+  <h4>About the Product</h4>
+  <div onclick="this.innerHTML = `
+    <iframe 
+      src='https://www.youtube.com/embed/ehvKU5wM0a8?autoplay=1' 
+      title='About the Product' 
+      style='width:100%;height:315px;border:0;' 
+      allowfullscreen>
+    </iframe>`" 
+    style="cursor:pointer;">
+    <img 
+      src="https://img.youtube.com/vi/ehvKU5wM0a8/hqdefault.jpg" 
+      alt="About the Product" 
+      style="width:100%; border-radius:8px;">
+  </div>
+</div>
+<!-- How Claims Work -->
+<div class="card">
+  <h4>How Claims Work</h4>
+  <div onclick="this.innerHTML = `
+    <iframe
+      src='https://www.youtube.com/embed/BApe9540XhE?autoplay=1'
+      title='How Claims Work'
+      style='width:100%;height:315px;border:0;'
+      allowfullscreen>
+    </iframe>`"
+    style="cursor:pointer;">
+    <img
+      src="https://img.youtube.com/vi/BApe9540XhE/hqdefault.jpg"
+      alt="How Claims Work"
+      style="width:100%; border-radius:8px;">
+  </div>
+</div>
+
+<!-- About the Team -->
+<div class="card">
+  <h4>About the Team</h4>
+  <div onclick="this.innerHTML = `
+    <iframe
+      src='https://www.youtube.com/embed/qchZLh5k8Vs?autoplay=1'
+      title='About the Team'
+      style='width:100%;height:315px;border:0;'
+      allowfullscreen>
+    </iframe>`"
+    style="cursor:pointer;">
+    <img
+      src="https://img.youtube.com/vi/qchZLh5k8Vs/hqdefault.jpg"
+      alt="About the Team"
+      style="width:100%; border-radius:8px;">
+  </div>
+</div>
+  </div>
+</div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section style="margin-top:24px">
+      <h3 class="section-title">Testimonials</h3>
+      <div class="testimonials" role="list">
+        <div class="testimonial" role="listitem"><div class="who">Maria P. - Student</div>“I filed a claim and it was processed under 48 hours. Easy and fast.”</div>
+        <div class="testimonial" role="listitem"><div class="who">Jose R. - Parent</div>“Knowing my children are protected gives me peace of mind.”</div>
+        <div class="testimonial" role="listitem"><div class="who">Lucia - Assistant</div>“Signup is simple and mobile-friendly.”</div>
+      </div>
+    </section>
+
+    <!-- Quick actions -->
+    <section style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
+      <div class="card" style="flex:1;min-width:260px">
+        <h3 style="margin:0 0 8px;font-family:'Poppins',sans-serif;color:var(--blue)">I have a claim</h3>
+        <p class="small">Submit your claim with a photo. Simple claims get automatic decisions.</p>
+        <div style="margin-top:12px">
+          <button class="btn-primary" onclick="openClaimModal()">Submit claim</button>
+        </div>
+      </div>
+
+      <div class="card small" style="flex:1;min-width:200px">
+        <h4 style="margin:0 0 6px">Support & Contact</h4>
+        <p class="small">Click for live support or contact options.</p>
+        <div style="margin-top:8px">
+          <button class="btn-ghost" onclick="openSupportCenter()">Open support center</button>
+          <button class="btn-ghost" onclick="openModal('modal-contact')">Contact</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer role="contentinfo" aria-labelledby="footer-title">
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap">
+        <div style="min-width:220px">
+          <img src="./assets/logo-upc.png" alt="ResiCare logo" style="width:56px;height:56px;border-radius:8px">
+          <div style="margin-top:8px;font-weight:700;color:var(--blue)">ResiCare</div>
+          <div class="small" style="margin-top:6px">Microinsurance for students & parents.</div>
+        </div>
+
+        <div class="footer-grid" style="flex:1;min-width:300px">
+          <div>
+            <h4>Product</h4>
+            <a href="#plans">Plans</a><br/>
+            <a href="#simulator">Simulator</a><br/>
+            <a href="#videos">Videos</a>
+          </div>
+
+          <div>
+            <h4>Company</h4>
+            <a href="about.html">Meet the team</a><br/>
+            <a href="terms.html">Terms & recommendations</a><br/>
+            <a href="#" onclick="openSupportCenter()">Support & Help</a>
+          </div>
+
+          <div>
+            <h4>Contact</h4>
+            <div class="small">contact@resicare.example</div>
+            <div class="small">+51 900 000 000</div>
+            <div style="margin-top:8px">
+              <a href="#" aria-label="Facebook">Facebook</a> · <a href="#" aria-label="Instagram">Instagram</a> · <a href="#" aria-label="X">X</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="margin-top:18px;border-top:1px solid #f3f6fb;padding-top:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
+        <div class="small">© 2025 ResiSeguro · All rights reserved</div>
+        <div class="small">Designed for students · Made with ❤️</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MODALS -->
+
+  <!-- Contract modal -->
+  <div id="modal-contract" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contract-title">
+      <button class="close-btn" onclick="closeModal('modal-contract')" aria-label="Close">✕</button>
+      <h3 id="contract-title">Subscribe - Basic</h3>
+      <p id="contract-desc" class="small">Demo description.</p>
+      <form onsubmit="submitContract(event)" aria-label="Contract form">
+        <label for="fullname">Full name</label>
+        <input id="fullname" class="input" required>
+        <label for="email">Email</label>
+        <input id="email" type="email" class="input" required>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+          <button type="button" class="btn-ghost" onclick="closeModal('modal-contract')">Cancel</button>
+          <button type="submit" class="btn-primary">Confirm & pay (demo)</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Claim modal -->
+  <div id="modal-claim" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="claim-title">
+      <button class="close-btn" onclick="closeModal('modal-claim')" aria-label="Close">✕</button>
+      <h3 id="claim-title">Submit claim</h3>
+      <p class="small">Upload a photo and describe the incident (demo).</p>
+      <form onsubmit="submitClaim(event)" aria-label="Claim form">
+        <label for="claim-name">Name</label>
+        <input id="claim-name" class="input" required>
+        <label for="claim-email">Email</label>
+        <input id="claim-email" type="email" class="input" required>
+        <label for="claim-file">Photo (optional)</label>
+        <input id="claim-file" type="file" accept="image/*" class="input">
+        <label for="claim-desc">Description</label>
+        <textarea id="claim-desc" class="input" rows="4" placeholder="Describe what happened" required></textarea>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
+          <button type="button" class="btn-ghost" onclick="closeModal('modal-claim')">Cancel</button>
+          <button type="submit" class="btn-primary">Send claim</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Support center modal -->
+  <div id="modal-support" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="support-title">
+      <button class="close-btn" onclick="closeModal('modal-support')" aria-label="Close">✕</button>
+      <h3 id="support-title">Support & Help</h3>
+      <p class="small">Choose how you want to contact us or open live support.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn-primary" onclick="openWhatsApp()">Open WhatsApp</button>
+        <button class="btn-ghost" onclick="openGmailCompose()">Open Gmail compose</button>
+        <button class="btn-ghost" onclick="openMailTo()">Open default mail client</button>
+        <a class="btn-ghost" href="terms.html">Terms & Recommendations</a>
+      </div>
+      <div style="margin-top:12px" class="small">(WhatsApp opens in a new tab; Gmail opens Gmail compose if logged in.)</div>
+    </div>
+  </div>
+
+  <!-- Contact modal with direct links too -->
+  <div id="modal-contact" class="modal-overlay" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title">
+      <button class="close-btn" onclick="closeModal('modal-contact')" aria-label="Close">✕</button>
+      <h3 id="contact-title">Contact</h3>
+      <p class="small">Choose one of the options below to send us a message.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+        <button class="btn-primary" onclick="openWhatsApp()">Message on WhatsApp</button>
+        <button class="btn-ghost" onclick="openGmailCompose()">Compose in Gmail</button>
+        <button class="btn-ghost" onclick="openMailTo()">Open default mail app</button>
+      </div>
+    </div>
+  </div>
+
+  
+  <script src="app.js"></script>
+
+  <script>
+(function() {
+  const translations = {
+    "Home": "Inicio",
+    "Meet the team": "Conoce al equipo",
+    "Benefits": "Beneficios",
+    "Plans": "Planes",
+    "Simulator": "Simulador",
+    "Videos": "Videos",
+    "Sign in": "Iniciar sesión",
+    "Subscribe": "Suscribirse",
+    "New • Fast microinsurance": "Nuevo • Microseguro rápido",
+    "Protect what matters during your university life": "Protege lo que importa durante tu vida universitaria",
+    "Quick, affordable microinsurance for students and parents. Easy signup, photo-based claims, and fast support.": "Microseguro rápido y accesible para estudiantes y padres. Registro fácil, reclamos con foto y soporte rápido.",
+    "View Plans": "Ver planes",
+    "Simulate Premium": "Simular prima",
+    "Fast claims": "Reclamos rápidos",
+    "Automatic decisions for minor incidents.": "Decisiones automáticas para incidentes menores.",
+    "Flexible plans": "Planes flexibles",
+    "Student-friendly prices and coverage.": "Precios y cobertura amigables para estudiantes.",
+    "Affordable protection": "Protección asequible",
+    "Plans designed for student budgets with clear coverage limits and no hidden costs.": "Planes diseñados para presupuestos estudiantiles con límites claros y sin costos ocultos.",
+    "Quick online claims": "Reclamos en línea rápidos",
+    "Submit a photo and details — get an automated decision for small claims or human review when needed.": "Envía una foto y detalles — recibe una decisión automática para reclamos pequeños o revisión humana si es necesario.",
+    "Digital peace of mind": "Tranquilidad digital",
+    "Manage policies, claims, and contact support through the app and web portal.": "Gestiona pólizas, reclamos y contacto con soporte a través de la app y portal web.",
+    "Basic Plan": "Plan Básico",
+    "Essential coverage for gadgets, backpack and basic assistance.": "Cobertura esencial para gadgets, mochila y asistencia básica.",
+    "Small-theft protection": "Protección contra pequeños robos",
+    "Photo claims": "Reclamos con foto",
+    "Basic teleconsult support": "Soporte básico de teleconsulta",
+    "Premium Plan": "Plan Premium",
+    "Higher coverage limits and priority claim handling.": "Límites de cobertura más altos y manejo prioritario de reclamos.",
+    "Higher limits per incident": "Límites más altos por incidente",
+    "Priority processing": "Procesamiento prioritario",
+    "Partial damage reimbursement": "Reembolso parcial por daños",
+    "Not sure yet?": "¿Aún no estás seguro?",
+    "Try the simulator or contact support": "Prueba el simulador o contacta soporte",
+    "Quick simulator": "Simulador rápido",
+    "Item value (S/)": "Valor del ítem (S/)",
+    "Choose plan": "Elegir plan",
+    "Duration (months)": "Duración (meses)",
+    "Calculate": "Calcular",
+    "Reset": "Reiniciar",
+    "About the Product": "Acerca del Producto",
+    "How Claims Work": "Cómo funcionan los reclamos",
+    "About the Team": "Acerca del Equipo",
+    "Testimonials": "Testimonios",
+    "I filed a claim and it was processed under 48 hours. Easy and fast.": "Presenté un reclamo y fue procesado en menos de 48 horas. Fácil y rápido.",
+    "Knowing my children are protected gives me peace of mind.": "Saber que mis hijos están protegidos me da tranquilidad.",
+    "Signup is simple and mobile-friendly.": "El registro es sencillo y amigable con móviles.",
+    "I have a claim": "Tengo un reclamo",
+    "Submit your claim with a photo. Simple claims get automatic decisions.": "Envía tu reclamo con una foto. Los reclamos simples obtienen decisiones automáticas.",
+    "Support & Contact": "Soporte y Contacto",
+    "Click for live support or contact options.": "Haz clic para soporte en vivo o opciones de contacto.",
+    "Product": "Producto",
+    "Company": "Compañía",
+    "Contact": "Contacto",
+    "Terms & recommendations": "Términos y recomendaciones",
+    "Support & Help": "Soporte y ayuda",
+    "Designed for students · Made with ❤️": "Diseñado para estudiantes · Hecho con ❤️",
+    "© 2025 ResiSeguro · All rights reserved": "© 2025 ResiSeguro · Todos los derechos reservados",
+    // agrega más traducciones si es necesario
+  };
+
+  let isEnglish = true;
+
+  // Crear botón
+  const btn = document.createElement("button");
+  btn.innerText = "Translate / Traducir";
+  btn.style.padding = "10px 15px";
+  btn.style.backgroundColor = "#1E3A8A";
+  btn.style.color = "#fff";
+  btn.style.border = "none";
+  btn.style.borderRadius = "5px";
+  btn.style.cursor = "pointer";
+  btn.style.fontSize = "14px";
+  btn.style.display = "inline-block";
+  btn.style.margin = "12px 20px"; // margen para que esté abajo del header
+
+  // Función para traducir
+  function translatePage() {
+    const elements = document.querySelectorAll("body *:not(script):not(style):not(iframe):not(button):not(input):not(textarea)");
+    elements.forEach(el => {
+      if (el.children.length === 0 && el.innerText.trim() !== "") {
+        const key = el.innerText.trim();
+        if (isEnglish) {
+          el.innerText = translations[key] || el.innerText;
+        } else {
+          // traducir de vuelta a inglés buscando la clave por valor
+          const original = Object.keys(translations).find(k => translations[k] === el.innerText);
+          if (original) el.innerText = original;
+        }
+      }
+    });
+    isEnglish = !isEnglish;
+  }
+
+  btn.addEventListener("click", translatePage);
+
+  // Insertar botón debajo del header
+  const header = document.querySelector("header");
+  header.parentNode.insertBefore(btn, header.nextSibling);
+})();
+</script>
+
+</body>
+</html>
