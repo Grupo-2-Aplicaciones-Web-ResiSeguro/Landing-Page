@@ -1,498 +1,644 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="es" dir="ltr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>ResiCare | Microinsurance for students & parents</title>
-  <meta name="description" content="Protect your belongings and peace of mind with microinsurance designed for students and parents. Quick signup, photo claims and reliable digital support." />
-  <meta name="keywords" content="microinsurance, student insurance, digital insurance, ResiCare, ResiSeguro" />
-  <meta name="author" content="ResiSeguro Startup" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ResiCare | Microseguro para estudiantes y padres</title>
+    <meta name="description" content="Protege tus pertenencias y tranquilidad con microseguro diseñado para estudiantes y padres. Registro rápido, reclamos con foto y soporte digital confiable.">
+    <meta name="keywords" content="microseguro, seguro estudiantes, seguro digital, ResiCare, ResiSeguro">
+    <meta name="author" content="ResiSeguro Startup">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://resicare.com/">
+    <meta property="og:title" content="ResiCare | Microseguro para estudiantes">
+    <meta property="og:description" content="Protección accesible y rápida para estudiantes universitarios">
+    <meta property="og:image" content="./assets/logo-upc.png">
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-  <link rel="icon" href="./assets/logo-upc.png" type="image/png">
-  <link rel="stylesheet" href="styles.css">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://resicare.com/">
+    <meta property="twitter:title" content="ResiCare | Microseguro para estudiantes">
+    <meta property="twitter:description" content="Protección accesible y rápida para estudiantes universitarios">
+    <meta property="twitter:image" content="./assets/logo-upc.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <link rel="icon" href="./assets/logo-upc.png" type="image/png">
+    <link rel="apple-touch-icon" href="./assets/logo-upc.png">
+    
+    <link rel="stylesheet" href="./css/styles.css">
 </head>
 <body>
-  
-  <header role="banner" aria-label="Main header">
-    <div class="container nav" role="navigation" aria-label="Main navigation">
-      <div class="brand">
-        <img src="./assets/logo-upc.png" alt="ResiCare logo">
-        <h1>ResiCare</h1>
-      </div>
+    <header class="header" id="header" role="banner">
+        <div class="container">
+            <nav class="nav" role="navigation" aria-label="Navegación principal">
+                <a href="#home" class="nav-brand" aria-label="ResiCare - Ir al inicio">
+                    <span data-translate="brand">ResiCare</span>
+                </a>
 
-      <nav aria-label="Primary navigation">
-        <ul>
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="about.html">Meet the team</a></li>
-          <li><a href="index.html#benefits">Benefits</a></li>
-          <li><a href="index.html#plans">Plans</a></li>
-          <li><a href="index.html#simulator">Simulator</a></li>
-          <li><a href="index.html#videos">Videos</a></li>
-        </ul>
-      </nav>
+                <ul class="nav-menu" id="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" class="nav-link" role="menuitem" data-translate="nav-home">Inicio</a></li>
+                    <li role="none"><a href="#benefits" class="nav-link" role="menuitem" data-translate="nav-benefits">Beneficios</a></li>
+                    <li role="none"><a href="#plans" class="nav-link" role="menuitem" data-translate="nav-plans">Planes</a></li>
+                    <li role="none"><a href="#testimonials" class="nav-link" role="menuitem" data-translate="nav-testimonials">Testimonios</a></li>
+                    <li role="none"><a href="#team" class="nav-link" role="menuitem" data-translate="nav-team">Equipo</a></li>
 
-      <div style="display:flex;gap:10px;align-items:center">
-        <button class="btn-ghost" aria-label="Sign in" onclick="alert('Demo: Sign in')">Sign in</button>
-        <button class="btn-primary" id="cta-subscribe" onclick="openContractModal('Basic',9.9)">Subscribe</button>
-        <button class="mobile-toggle" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open menu" onclick="toggleMobileMenu(this)">☰</button>
-      </div>
-    </div>
+                    <!-- Botones móviles dentro del menú -->
+                    <div class="mobile-auth-actions">
+                        <div class="language-selector" role="group" aria-label="Selector de idioma">
+                            <button class="lang-btn active" onclick="LanguageModule.setLanguage('es')" aria-label="Cambiar a español">ES</button>
+                            <button class="lang-btn" onclick="LanguageModule.setLanguage('en')" aria-label="Switch to English">EN</button>
+                        </div>
+                        <button class="btn btn-ghost" id="mobile-auth-button" onclick="AuthModule.openLoginModal()" data-translate="nav-login">Iniciar Sesión</button>
+                        <a href="#plans" class="btn btn-primary" id="mobile-register-button" data-translate="nav-register">Registrarse</a>
+                        <button class="btn btn-ghost" id="mobile-logout-button" onclick="AuthModule.logout()" data-translate="nav-logout" style="display: none;">Cerrar Sesión</button>
+                    </div>
+                </ul>
 
-    <div id="mobile-menu" style="display:none;background:var(--white);border-top:1px solid #eef2f7">
-      <div class="container" style="padding:12px 0">
-        <ul style="display:flex;flex-direction:column;gap:10px;margin:0;padding:0;list-style:none">
-          <li><a href="index.html#home">Home</a></li>
-          <li><a href="about.html">Meet the team</a></li>
-          <li><a href="index.html#benefits">Benefits</a></li>
-          <li><a href="index.html#plans">Plans</a></li>
-          <li><a href="index.html#simulator">Simulator</a></li>
-          <li><a href="index.html#videos">Videos</a></li>
-          <li><a href="terms.html">Terms & Recommendations</a></li>
-        </ul>
-      </div>
-    </div>
-  </header>
-
-  
-  <main id="home" class="container" role="main">
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-left">
-        <span class="eyebrow">New • Fast microinsurance</span>
-        <h2 id="hero-title">Protect what matters during your university life</h2>
-        <p>Quick, affordable microinsurance for students and parents. Easy signup, photo-based claims, and fast support.</p>
-
-        <div class="hero-ctas">
-          <button class="btn-primary" onclick="scrollToSection('#plans')">View Plans</button>
-          <button class="btn-ghost" onclick="scrollToSection('#simulator')">Simulate Premium</button>
+                <div class="nav-actions">
+                    <div class="language-selector" role="group" aria-label="Selector de idioma">
+                        <button class="lang-btn active" onclick="LanguageModule.setLanguage('es')" aria-label="Cambiar a español">ES</button>
+                        <button class="lang-btn" onclick="LanguageModule.setLanguage('en')" aria-label="Switch to English">EN</button>
+                    </div>
+                    <button class="btn btn-ghost" id="auth-button" onclick="AuthModule.openLoginModal()" data-translate="nav-login">Iniciar Sesión</button>
+                    <a href="#plans" class="btn btn-primary" id="register-button" data-translate="nav-register">Registrarse</a>
+                    <button class="btn btn-ghost" id="logout-button" onclick="AuthModule.logout()" data-translate="nav-logout" style="display: none;">Cerrar Sesión</button>
+                    <button class="mobile-toggle" onclick="NavigationModule.toggleMobileMenu()" aria-label="Abrir menú móvil" aria-expanded="false">
+                        <i class="fas fa-bars" aria-hidden="true"></i>
+                    </button>
+                </div>
+            </nav>
         </div>
+    </header>
 
-        <div style="display:flex;gap:12px;margin-top:18px;flex-wrap:wrap">
-          <div class="card" style="display:flex;gap:12px;align-items:center">
-            <div style="width:44px;height:44px;border-radius:10px;background:rgba(30,58,138,0.06);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue)">✓</div>
-            <div>
-              <div style="font-weight:700">Fast claims</div>
-              <div class="small">Automatic decisions for minor incidents.</div>
+    <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
+
+    <main role="main">
+        <section class="hero" id="home" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-content">
+                    <div class="hero-text fade-in">
+                        <h1 id="hero-title" data-translate="hero-title">Protege lo que más importa durante tu vida universitaria</h1>
+                        <p class="hero-subtitle" data-translate="hero-subtitle">Microseguro rápido y accesible diseñado específicamente para estudiantes y padres. Registro simple, reclamos con foto y soporte digital confiable.</p>
+                        
+                        <div class="hero-features">
+                            <div class="hero-feature">
+                                <i class="fas fa-bolt" aria-hidden="true"></i>
+                                <span data-translate="hero-feature-1">Reclamos instantáneos</span>
+                            </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                                <span data-translate="hero-feature-2">Protección completa</span>
+                            </div>
+                            <div class="hero-feature">
+                                <i class="fas fa-mobile-alt" aria-hidden="true"></i>
+                                <span data-translate="hero-feature-3">100% digital</span>
+                            </div>
+                        </div>
+                        
+                        <div class="hero-actions">
+                            <a href="#plans" class="btn btn-primary btn-lg" data-translate="hero-cta-primary">
+                                <i class="fas fa-shield-alt"></i> Ver Planes
+                            </a>
+                            <a href="#benefits" class="btn btn-secondary btn-lg" data-translate="hero-cta-secondary">
+                                <i class="fas fa-info-circle"></i> Conocer Beneficios
+                            </a>
+                        </div>
+
+                        <div class="hero-stats">
+                            <div class="stat">
+                                <div class="stat-number">5,000+</div>
+                                <div class="stat-label" data-translate="stat-students">Estudiantes protegidos</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">48h</div>
+                                <div class="stat-label" data-translate="stat-response">Tiempo de respuesta</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">98%</div>
+                                <div class="stat-label" data-translate="stat-satisfaction">Satisfacción</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="hero-visual fade-in stagger-2">
+                        <div class="hero-image-container">
+                            <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=600&h=400&fit=crop&crop=center" 
+                                 alt="Estudiantes universitarios utilizando tecnología" 
+                                 class="hero-image"
+                                 loading="eager">
+                            <div class="floating-cards">
+                                <div class="floating-card floating-card-1">
+                                    <div class="card-icon success">
+                                        <i class="fas fa-check-circle" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <strong data-translate="floating-card-1-title">Reclamo Aprobado</strong>
+                                        <p data-translate="floating-card-1-desc">Tu laptop fue reemplazada en 24 horas</p>
+                                    </div>
+                                </div>
+                                <div class="floating-card floating-card-2">
+                                    <div class="card-icon primary">
+                                        <i class="fas fa-piggy-bank" aria-hidden="true"></i>
+                                    </div>
+                                    <div class="card-content">
+                                        <strong data-translate="floating-card-2-title">Ahorro Total</strong>
+                                        <p data-translate="floating-card-2-desc">S/ 1,200 ahorrados en protección</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
 
-          <div class="card" style="display:flex;gap:12px;align-items:center">
-            <div style="width:44px;height:44px;border-radius:10px;background:rgba(16,185,129,0.06);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--green)">★</div>
-            <div>
-              <div style="font-weight:700">Flexible plans</div>
-              <div class="small">Student-friendly prices and coverage.</div>
+        <section class="benefits" id="benefits" aria-labelledby="benefits-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="benefits-title" class="section-title" data-translate="benefits-title">
+                        <i class="fas fa-star"></i> ¿Por qué elegir ResiCare?
+                    </h2>
+                    <p class="section-subtitle" data-translate="benefits-subtitle">Diseñamos cada beneficio pensando en las necesidades reales de los estudiantes universitarios y sus familias.</p>
+                </div>
+                
+                <div class="benefits-grid">
+                    <article class="benefit-card fade-in stagger-1" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-wallet" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-1-title">Precios Accesibles</h3>
+                        <p data-translate="benefit-1-desc">Planes diseñados especialmente para presupuestos estudiantiles, con límites de cobertura claros y sin costos ocultos.</p>
+                    </article>
+                    
+                    <article class="benefit-card fade-in stagger-2" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-camera" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-2-title">Reclamos con Foto</h3>
+                        <p data-translate="benefit-2-desc">Envía una foto y los detalles del incidente. Obtén decisiones automáticas para reclamos menores o revisión humana cuando sea necesario.</p>
+                    </article>
+                    
+                    <article class="benefit-card fade-in stagger-3" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-heart" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-3-title">Tranquilidad Digital</h3>
+                        <p data-translate="benefit-3-desc">Gestiona pólizas, reclamos y contacta con soporte a través de nuestra app y portal web las 24 horas del día.</p>
+                    </article>
+                    
+                    <article class="benefit-card fade-in stagger-1" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-clock" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-4-title">Respuesta Rápida</h3>
+                        <p data-translate="benefit-4-desc">Procesamiento de reclamos en menos de 48 horas para incidentes menores, con notificaciones en tiempo real.</p>
+                    </article>
+                    
+                    <article class="benefit-card fade-in stagger-2" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-users" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-5-title">Soporte Especializado</h3>
+                        <p data-translate="benefit-5-desc">Equipo de soporte que entiende las necesidades específicas de estudiantes universitarios y sus familias.</p>
+                    </article>
+                    
+                    <article class="benefit-card fade-in stagger-3" tabindex="0">
+                        <div class="benefit-icon">
+                            <i class="fas fa-certificate" aria-hidden="true"></i>
+                        </div>
+                        <h3 data-translate="benefit-6-title">Confianza Garantizada</h3>
+                        <p data-translate="benefit-6-desc">Respaldados por tecnología segura y procesos transparentes que puedes verificar en cada paso.</p>
+                    </article>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
+        </section>
 
-      <aside class="hero-illustration" aria-hidden="true">
-        <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=placeholder" alt="Students illustration">
-      </aside>
-    </section>
+        <section class="plans" id="plans" aria-labelledby="plans-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="plans-title" class="section-title" data-translate="plans-title">
+                        <i class="fas fa-shield-alt"></i> Planes diseñados para ti
+                    </h2>
+                    <p class="section-subtitle" data-translate="plans-subtitle">Elige el plan que mejor se adapte a tus necesidades y presupuesto. Todos incluyen nuestra garantía de satisfacción.</p>
+                </div>
+                
+                <div class="plans-grid">
+                    <article class="plan-card fade-in stagger-1" role="article" aria-labelledby="plan-basic-title">
+                        <div class="plan-header">
+                            <h3 id="plan-basic-title" class="plan-name" data-translate="plan-basic-name">Plan Básico</h3>
+                            <div class="plan-price" aria-label="Precio: 9 soles con 90 centavos por mes">
+                                S/ 9.90 <span data-translate="plan-price-period">/ mes</span>
+                            </div>
+                            <p class="plan-description" data-translate="plan-basic-desc">Protección esencial para estudiantes que inician su vida universitaria.</p>
+                        </div>
+                        
+                        <ul class="plan-features" role="list">
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-basic-feature-1">Protección contra robos menores</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-basic-feature-2">Reclamos con foto</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-basic-feature-3">Soporte de teleconsulta básico</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-basic-feature-4">Cobertura hasta S/ 2,000</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-basic-feature-5">App móvil incluida</span></li>
+                        </ul>
+                        
+                        <button class="btn btn-primary plan-cta" onclick="SubscriptionModule.openModal('basic', 9.90)" data-translate="plan-cta">
+                            <i class="fas fa-check"></i> Elegir Plan
+                        </button>
+                    </article>
+                    
+                    <article class="plan-card featured fade-in stagger-2" role="article" aria-labelledby="plan-premium-title">
+                        <div class="plan-badge" data-translate="plan-popular">Más Popular</div>
+                        <div class="plan-header">
+                            <h3 id="plan-premium-title" class="plan-name" data-translate="plan-premium-name">Plan Premium</h3>
+                            <div class="plan-price" aria-label="Precio: 24 soles con 90 centavos por mes">
+                                S/ 24.90 <span data-translate="plan-price-period">/ mes</span>
+                            </div>
+                            <p class="plan-description" data-translate="plan-premium-desc">Cobertura completa con límites más altos y procesamiento prioritario.</p>
+                        </div>
+                        
+                        <ul class="plan-features" role="list">
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-1">Todo lo del Plan Básico</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-2">Límites más altos por incidente</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-3">Procesamiento prioritario</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-4">Reembolso por daños parciales</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-5">Cobertura hasta S/ 5,000</span></li>
+                            <li role="listitem"><i class="fas fa-check" aria-hidden="true"></i><span data-translate="plan-premium-feature-6">Soporte 24/7 prioritario</span></li>
+                        </ul>
+                        
+                        <button class="btn btn-primary plan-cta" onclick="SubscriptionModule.openModal('premium', 24.90)" data-translate="plan-cta">
+                            <i class="fas fa-star"></i> Elegir Plan
+                        </button>
+                    </article>
+                    
+                </div>
 
-    <!-- BENEFITS -->
-    <section id="benefits" style="margin-top:18px">
-      <h3 class="section-title">Benefits</h3>
-      <div class="grid-3">
-        <div class="card">
-          <h4>Affordable protection</h4>
-          <p class="small">Plans designed for student budgets with clear coverage limits and no hidden costs.</p>
-        </div>
-        <div class="card">
-          <h4>Quick online claims</h4>
-          <p class="small">Submit a photo and details — get an automated decision for small claims or human review when needed.</p>
-        </div>
-        <div class="card">
-          <h4>Digital peace of mind</h4>
-          <p class="small">Manage policies, claims, and contact support through the app and web portal.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- PLANS -->
-    <section id="plans" aria-labelledby="plans-title" style="margin-top:20px">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <h2 id="plans-title" class="section-title">Plans</h2>
-        <div class="badge">From S/ 9.90 / month</div>
-      </div>
-
-      <div class="plans" role="list" aria-label="Available plans">
-        <article class="plan" role="listitem" aria-labelledby="plan-basic">
-          <h3 id="plan-basic">Basic Plan</h3>
-          <div class="price">S/ 9.90 <span style="font-size:0.85rem;font-weight:500;color:var(--muted)">/ month</span></div>
-          <p class="small">Essential coverage for gadgets, backpack and basic assistance.</p>
-          <ul>
-            <li>Small-theft protection</li>
-            <li>Photo claims</li>
-            <li>Basic teleconsult support</li>
-          </ul>
-          <div class="plan-cta">
-            <button class="btn-primary" onclick="openContractModal('Basic',9.9)">Subscribe</button>
-            <a class="btn-ghost" href="about.html" style="margin-left:8px;display:inline-flex;align-items:center">Meet the team</a>
-          </div>
-        </article>
-
-        <article class="plan" role="listitem" aria-labelledby="plan-premium">
-          <h3 id="plan-premium">Premium Plan</h3>
-          <div class="price">S/ 24.90 <span style="font-size:0.85rem;font-weight:500;color:var(--muted)">/ month</span></div>
-          <p class="small">Higher coverage limits and priority claim handling.</p>
-          <ul>
-            <li>Higher limits per incident</li>
-            <li>Priority processing</li>
-            <li>Partial damage reimbursement</li>
-          </ul>
-          <div class="plan-cta">
-            <button class="btn-primary" onclick="openContractModal('Premium',24.9)">Subscribe</button>
-            <a class="btn-ghost" href="terms.html" style="margin-left:8px;display:inline-flex;align-items:center">Terms & recommendations</a>
-          </div>
-        </article>
-
-        <article class="plan" role="listitem" aria-labelledby="plan-faq">
-          <h3 id="plan-faq">Not sure yet?</h3>
-          <div style="font-weight:600;color:var(--muted);margin:6px 0">Try the simulator or contact support</div>
-          <div class="simulator" id="simulator" aria-labelledby="sim-title">
-            <h4 id="sim-title" style="margin:0 0 8px;font-family:'Poppins',sans-serif;color:var(--blue)">Quick simulator</h4>
-            <label for="valor">Item value (S/)</label>
-            <input id="valor" type="number" class="input" min="10" value="1000" />
-            <label for="plan-select">Choose plan</label>
-            <select id="plan-select" class="input" aria-label="Choose a plan for simulation">
-              <option value="9.9">Basic - S/ 9.90</option>
-              <option value="24.9">Premium - S/ 24.90</option>
-            </select>
-            <label for="meses">Duration (months)</label>
-            <input id="meses" type="number" class="input" min="1" max="12" value="1" />
-            <div style="display:flex;gap:10px;align-items:center">
-              <button class="btn-primary" onclick="runSimulator()">Calculate</button>
-              <button class="btn-ghost" onclick="resetSimulator()">Reset</button>
+                <div class="simulator-container fade-in">
+                    <div class="simulator" id="premium-simulator" aria-labelledby="simulator-title">
+                        <h3 id="simulator-title" class="simulator-title" data-translate="simulator-title">Simulador de Prima</h3>
+                        <p class="simulator-description" data-translate="simulator-description">Calcula el costo de tu protección personalizada</p>
+                        
+                        <div class="simulator-form">
+                            <div class="form-group">
+                                <label for="item-value" data-translate="simulator-item-value">Valor del artículo (S/)</label>
+                                <input type="number" id="item-value" class="form-input" min="100" max="15000" value="1000" aria-describedby="item-value-help">
+                                <small id="item-value-help" class="form-help" data-translate="simulator-item-help">Entre S/ 100 y S/ 15,000</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="plan-select" data-translate="simulator-plan">Selecciona tu plan</label>
+                                <select id="plan-select" class="form-select" aria-describedby="plan-select-help">
+                                    <option value="9.90" data-translate="plan-basic-name">Plan Básico - S/ 9.90</option>
+                                    <option value="24.90" selected data-translate="plan-premium-name">Plan Premium - S/ 24.90</option>
+                                </select>
+                                <small id="plan-select-help" class="form-help" data-translate="simulator-plan-help">Elige el plan que mejor se adapte a ti</small>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="duration" data-translate="simulator-duration">Duración (meses)</label>
+                                <input type="number" id="duration" class="form-input" min="1" max="12" value="6" aria-describedby="duration-help">
+                                <small id="duration-help" class="form-help" data-translate="simulator-duration-help">De 1 a 12 meses</small>
+                            </div>
+                            
+                            <div class="simulator-actions">
+                                <button class="btn btn-primary" onclick="SimulatorModule.calculate()" data-translate="simulator-calculate">
+                                    <i class="fas fa-calculator"></i> Calcular
+                                </button>
+                                <button class="btn btn-ghost" onclick="SimulatorModule.reset()" data-translate="simulator-reset">
+                                    <i class="fas fa-redo"></i> Limpiar
+                                </button>
+                            </div>
+                            
+                            <div id="simulator-result" class="simulator-result" aria-live="polite" aria-atomic="true"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="sim-result" style="margin-top:12px" aria-live="polite"></div>
-          </div>
-        </article>
-      </div>
-    </section>
+        </section>
 
-    <!-- VIDEOS -->
-    <section id="videos" style="margin-top:24px">
-      <h3 class="section-title">Videos</h3>
-      <div class="grid-3">
-        <!-- About the Product -->
-<div class="card">
-  <h4>About the Product</h4>
-  <div onclick="this.innerHTML = `
-    <iframe 
-      src='https://www.youtube.com/embed/ehvKU5wM0a8?autoplay=1' 
-      title='About the Product' 
-      style='width:100%;height:315px;border:0;' 
-      allowfullscreen>
-    </iframe>`" 
-    style="cursor:pointer;">
-    <img 
-      src="https://img.youtube.com/vi/ehvKU5wM0a8/hqdefault.jpg" 
-      alt="About the Product" 
-      style="width:100%; border-radius:8px;">
-  </div>
-</div>
-<!-- How Claims Work -->
-<div class="card">
-  <h4>How Claims Work</h4>
-  <div onclick="this.innerHTML = `
-    <iframe
-      src='https://www.youtube.com/embed/BApe9540XhE?autoplay=1'
-      title='How Claims Work'
-      style='width:100%;height:315px;border:0;'
-      allowfullscreen>
-    </iframe>`"
-    style="cursor:pointer;">
-    <img
-      src="https://img.youtube.com/vi/BApe9540XhE/hqdefault.jpg"
-      alt="How Claims Work"
-      style="width:100%; border-radius:8px;">
-  </div>
-</div>
-
-<!-- About the Team -->
-<div class="card">
-  <h4>About the Team</h4>
-  <div onclick="this.innerHTML = `
-    <iframe
-      src='https://www.youtube.com/embed/qchZLh5k8Vs?autoplay=1'
-      title='About the Team'
-      style='width:100%;height:315px;border:0;'
-      allowfullscreen>
-    </iframe>`"
-    style="cursor:pointer;">
-    <img
-      src="https://img.youtube.com/vi/qchZLh5k8Vs/hqdefault.jpg"
-      alt="About the Team"
-      style="width:100%; border-radius:8px;">
-  </div>
-</div>
-  </div>
-</div>
-
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS -->
-    <section style="margin-top:24px">
-      <h3 class="section-title">Testimonials</h3>
-      <div class="testimonials" role="list">
-        <div class="testimonial" role="listitem"><div class="who">Maria P. - Student</div>“I filed a claim and it was processed under 48 hours. Easy and fast.”</div>
-        <div class="testimonial" role="listitem"><div class="who">Jose R. - Parent</div>“Knowing my children are protected gives me peace of mind.”</div>
-        <div class="testimonial" role="listitem"><div class="who">Lucia - Assistant</div>“Signup is simple and mobile-friendly.”</div>
-      </div>
-    </section>
-
-    <!-- Quick actions -->
-    <section style="margin-top:24px;display:flex;gap:16px;flex-wrap:wrap;align-items:center">
-      <div class="card" style="flex:1;min-width:260px">
-        <h3 style="margin:0 0 8px;font-family:'Poppins',sans-serif;color:var(--blue)">I have a claim</h3>
-        <p class="small">Submit your claim with a photo. Simple claims get automatic decisions.</p>
-        <div style="margin-top:12px">
-          <button class="btn-primary" onclick="openClaimModal()">Submit claim</button>
-        </div>
-      </div>
-
-      <div class="card small" style="flex:1;min-width:200px">
-        <h4 style="margin:0 0 6px">Support & Contact</h4>
-        <p class="small">Click for live support or contact options.</p>
-        <div style="margin-top:8px">
-          <button class="btn-ghost" onclick="openSupportCenter()">Open support center</button>
-          <button class="btn-ghost" onclick="openModal('modal-contact')">Contact</button>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer role="contentinfo" aria-labelledby="footer-title">
-    <div class="container">
-      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:24px;flex-wrap:wrap">
-        <div style="min-width:220px">
-          <img src="./assets/logo-upc.png" alt="ResiCare logo" style="width:56px;height:56px;border-radius:8px">
-          <div style="margin-top:8px;font-weight:700;color:var(--blue)">ResiCare</div>
-          <div class="small" style="margin-top:6px">Microinsurance for students & parents.</div>
-        </div>
-
-        <div class="footer-grid" style="flex:1;min-width:300px">
-          <div>
-            <h4>Product</h4>
-            <a href="#plans">Plans</a><br/>
-            <a href="#simulator">Simulator</a><br/>
-            <a href="#videos">Videos</a>
-          </div>
-
-          <div>
-            <h4>Company</h4>
-            <a href="about.html">Meet the team</a><br/>
-            <a href="terms.html">Terms & recommendations</a><br/>
-            <a href="#" onclick="openSupportCenter()">Support & Help</a>
-          </div>
-
-          <div>
-            <h4>Contact</h4>
-            <div class="small">contact@resicare.example</div>
-            <div class="small">+51 900 000 000</div>
-            <div style="margin-top:8px">
-              <a href="#" aria-label="Facebook">Facebook</a> · <a href="#" aria-label="Instagram">Instagram</a> · <a href="#" aria-label="X">X</a>
+        <section class="testimonials" id="testimonials" aria-labelledby="testimonials-title">
+            <div class="container">
+                <div class="section-header fade-in">
+                    <h2 id="testimonials-title" class="section-title" data-translate="testimonials-title">
+                        <i class="fas fa-comments"></i> Lo que dicen nuestros usuarios
+                    </h2>
+                    <p class="section-subtitle" data-translate="testimonials-subtitle">Miles de estudiantes y padres ya confían en ResiCare para proteger lo que más valoran.</p>
+                </div>
+                
+                <div class="testimonials-container">
+                    <div class="testimonials-grid">
+                        <article class="testimonial-card fade-in stagger-1" role="article" tabindex="0">
+                            <blockquote class="testimonial-quote" data-translate="testimonial-1-quote">
+                                "Presenté un reclamo por mi laptop robada y fue procesado en menos de 24 horas. El proceso fue súper fácil, solo tomé fotos y llené un formulario simple. ¡Increíble servicio!"
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" aria-hidden="true">MR</div>
+                                <div class="author-info">
+                                    <h4 data-translate="testimonial-1-name">María Rodríguez</h4>
+                                    <p data-translate="testimonial-1-role">Estudiante de Ingeniería - UPC</p>
+                                </div>
+                                <div class="rating" aria-label="5 de 5 estrellas" role="img">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card fade-in stagger-2" role="article" tabindex="0">
+                            <blockquote class="testimonial-quote" data-translate="testimonial-2-quote">
+                                "Como padre, me da mucha tranquilidad saber que mis hijos están protegidos mientras estudian. Los precios son muy razonables y el servicio al cliente es excelente."
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" aria-hidden="true">JS</div>
+                                <div class="author-info">
+                                    <h4 data-translate="testimonial-2-name">José Silva</h4>
+                                    <p data-translate="testimonial-2-role">Padre de familia</p>
+                                </div>
+                                <div class="rating" aria-label="5 de 5 estrellas" role="img">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                        
+                        <article class="testimonial-card fade-in stagger-3" role="article" tabindex="0">
+                            <blockquote class="testimonial-quote" data-translate="testimonial-3-quote">
+                                "La aplicación es súper intuitiva y el registro fue muy rápido. Me encanta poder gestionar todo desde mi celular y recibir notificaciones en tiempo real."
+                            </blockquote>
+                            <div class="testimonial-author">
+                                <div class="author-avatar" aria-hidden="true">LC</div>
+                                <div class="author-info">
+                                    <h4 data-translate="testimonial-3-name">Lucía Castro</h4>
+                                    <p data-translate="testimonial-3-role">Estudiante de Medicina - UNMSM</p>
+                                </div>
+                                <div class="rating" aria-label="5 de 5 estrellas" role="img">
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                    <i class="fas fa-star" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </article>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <section class="cta" aria-labelledby="cta-title">
+            <div class="container">
+                <div class="cta-content fade-in">
+                    <h2 id="cta-title" data-translate="cta-title">
+                        <i class="fas fa-rocket"></i> ¿Listo para proteger tu futuro?
+                    </h2>
+                    <p data-translate="cta-subtitle">Únete a miles de estudiantes que ya protegen sus pertenencias con ResiCare. Comienza hoy mismo con nuestro plan más popular.</p>
+                    <div class="cta-actions">
+                        <a href="#plans" class="btn btn-primary btn-lg" data-translate="cta-primary">
+                            <i class="fas fa-play"></i> Comenzar Ahora
+                        </a>
+                        <a href="#team" class="btn btn-secondary btn-lg" data-translate="cta-secondary">
+                            <i class="fas fa-users"></i> Conocer al Equipo
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team" id="team" aria-labelledby="team-title">
+            <div class="container">
+                <div class="section-header">
+                    <h2 id="team-title" class="section-title" data-translate="team-title">
+                        <i class="fas fa-users"></i> Nuestro Equipo
+                    </h2>
+                    <p class="section-subtitle" data-translate="team-subtitle">
+                        Conoce a los innovadores detrás de ResiCare, comprometidos con transformar la protección para estudiantes.
+                    </p>
+                </div>
+                
+                <div class="team-grid">
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="./assets/FotoJude.jpg" alt="Jude Alessandro Hermoza" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Jude Alessandro Hermoza</h3>
+                            <p class="member-role" data-translate="team-jude-role">falta llenar:V</p>
+                            <p class="member-description" data-translate="team-jude-description">
+                                falta llenar:V
+                            </p>
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn de Jude">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub de Jude">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="./assets/hector.png" alt="Héctor Javier Ríos" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Héctor Javier Ríos</h3>
+                            <p class="member-role" data-translate="team-hector-role">falta llenar:V</p>
+                            <p class="member-description" data-translate="team-hector-description">
+                                falta llenar:V
+                            </p>
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn de Héctor">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub de Héctor">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="./assets/jose.png" alt="José Manuel Pariona" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">José Manuel Pariona</h3>
+                            <p class="member-role" data-translate="team-jose-role">falta llenar:V</p>
+                            <p class="member-description" data-translate="team-jose-description">
+                                falta llenar:V
+                            </p>
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn de José">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub de José">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="./assets/vanessa.jpeg" alt="Vanessa May Lang Choy" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Vanessa May Lang Choy</h3>
+                            <p class="member-role" data-translate="team-vanessa-role">falta llenar:V</p>
+                            <p class="member-description" data-translate="team-vanessa-description">
+                                falta llenar:V
+                            </p>
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn de Vanessa">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub de Vanessa">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member">
+                        <div class="member-photo">
+                            <img src="./assets/user.webp" alt="Carlo Patricio Ramirez" loading="lazy">
+                        </div>
+                        <div class="member-info">
+                            <h3 class="member-name">Carlo Patricio Ramirez</h3>
+                            <p class="member-role" data-translate="team-carlo-role">falta llenar:V</p>
+                            <p class="member-description" data-translate="team-carlo-description">
+                                falta llenar:V
+                            </p>
+                            <div class="member-social">
+                                <a href="#" class="social-link" aria-label="LinkedIn de Carlo">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                                <a href="#" class="social-link" aria-label="GitHub de Carlo">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="team-values">
+                    <h3 data-translate="team-values-title">Nuestros Valores</h3>
+                    <div class="values-grid">
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-heart" aria-hidden="true"></i>
+                            </div>
+                            <h4 data-translate="team-value-1-title">Empatía</h4>
+                            <p data-translate="team-value-1-description">Entendemos las necesidades reales de los estudiantes y sus familias.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-lightbulb" aria-hidden="true"></i>
+                            </div>
+                            <h4 data-translate="team-value-2-title">Innovación</h4>
+                            <p data-translate="team-value-2-description">Creamos soluciones tecnológicas que simplifican y mejoran la protección.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-shield-alt" aria-hidden="true"></i>
+                            </div>
+                            <h4 data-translate="team-value-3-title">Confianza</h4>
+                            <p data-translate="team-value-3-description">Construimos relaciones sólidas basadas en transparencia y compromiso.</p>
+                        </div>
+                        <div class="value-item">
+                            <div class="value-icon">
+                                <i class="fas fa-users" aria-hidden="true"></i>
+                            </div>
+                            <h4 data-translate="team-value-4-title">Comunidad</h4>
+                            <p data-translate="team-value-4-description">Formamos parte de la comunidad estudiantil y trabajamos para su bienestar.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer" role="contentinfo" aria-labelledby="footer-title">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3 id="footer-title">ResiCare</h3>
+                    <p data-translate="footer-description">
+                        Microseguro innovador diseñado específicamente para estudiantes universitarios y sus familias. Protección accesible, rápida y confiable.
+                    </p>
+                    <div class="social-links" role="list" aria-label="Redes sociales">
+                        <a href="#" class="social-link" aria-label="Síguenos en Facebook" role="listitem">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Síguenos en Instagram" role="listitem">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Síguenos en Twitter" role="listitem">
+                            <i class="fab fa-twitter" aria-hidden="true"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Conéctate en LinkedIn" role="listitem">
+                            <i class="fab fa-linkedin-in" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer-product-title">Producto</h4>
+                    <ul class="footer-links" role="list">
+                        <li role="listitem"><a href="#benefits" data-translate="footer-benefits">Beneficios</a></li>
+                        <li role="listitem"><a href="#plans" data-translate="footer-plans">Planes</a></li>
+                        <li role="listitem"><a href="#" data-translate="footer-app">Descargar App</a></li>
+                        <li role="listitem"><a href="#plans" data-translate="footer-simulator">Simulador</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer-company-title">Compañía</h4>
+                    <ul class="footer-links" role="list">
+                        <li role="listitem"><a href="#team" data-translate="footer-about">Sobre Nosotros</a></li>
+                        <li role="listitem"><a href="#" onclick="showSimpleModal('terms')" data-translate="footer-terms">Términos y Condiciones</a></li>
+                        <li role="listitem"><a href="#" onclick="showSimpleModal('privacy')" data-translate="footer-privacy">Política de Privacidad</a></li>
+                        <li role="listitem"><a href="#" onclick="window.ContactModule.openModal()" data-translate="footer-contact">Contacto</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 data-translate="footer-support-title">Soporte</h4>
+                    <ul class="footer-links" role="list">
+                        <li role="listitem"><a href="#" onclick="window.SupportModule.openHelp()" data-translate="footer-help">Centro de Ayuda</a></li>
+                        <li role="listitem"><a href="#" onclick="window.ClaimsModule.openModal()" data-translate="footer-claims">Hacer Reclamo</a></li>
+                        <li role="listitem"><a href="tel:+51900000000" data-translate="footer-phone">+51 900 000 000</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p data-translate="footer-copyright">© 2025 ResiSeguro. Todos los derechos reservados. | Diseñado con ❤️ para estudiantes</p>
+            </div>
         </div>
-      </div>
+    </footer>
 
-      <div style="margin-top:18px;border-top:1px solid #f3f6fb;padding-top:12px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap">
-        <div class="small">© 2025 ResiSeguro · All rights reserved</div>
-        <div class="small">Designed for students · Made with ❤️</div>
-      </div>
-    </div>
-  </footer>
 
-  <!-- MODALS -->
-
-  <!-- Contract modal -->
-  <div id="modal-contract" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contract-title">
-      <button class="close-btn" onclick="closeModal('modal-contract')" aria-label="Close">✕</button>
-      <h3 id="contract-title">Subscribe - Basic</h3>
-      <p id="contract-desc" class="small">Demo description.</p>
-      <form onsubmit="submitContract(event)" aria-label="Contract form">
-        <label for="fullname">Full name</label>
-        <input id="fullname" class="input" required>
-        <label for="email">Email</label>
-        <input id="email" type="email" class="input" required>
-        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
-          <button type="button" class="btn-ghost" onclick="closeModal('modal-contract')">Cancel</button>
-          <button type="submit" class="btn-primary">Confirm & pay (demo)</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Claim modal -->
-  <div id="modal-claim" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="claim-title">
-      <button class="close-btn" onclick="closeModal('modal-claim')" aria-label="Close">✕</button>
-      <h3 id="claim-title">Submit claim</h3>
-      <p class="small">Upload a photo and describe the incident (demo).</p>
-      <form onsubmit="submitClaim(event)" aria-label="Claim form">
-        <label for="claim-name">Name</label>
-        <input id="claim-name" class="input" required>
-        <label for="claim-email">Email</label>
-        <input id="claim-email" type="email" class="input" required>
-        <label for="claim-file">Photo (optional)</label>
-        <input id="claim-file" type="file" accept="image/*" class="input">
-        <label for="claim-desc">Description</label>
-        <textarea id="claim-desc" class="input" rows="4" placeholder="Describe what happened" required></textarea>
-        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:12px">
-          <button type="button" class="btn-ghost" onclick="closeModal('modal-claim')">Cancel</button>
-          <button type="submit" class="btn-primary">Send claim</button>
-        </div>
-      </form>
-    </div>
-  </div>
-
-  <!-- Support center modal -->
-  <div id="modal-support" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="support-title">
-      <button class="close-btn" onclick="closeModal('modal-support')" aria-label="Close">✕</button>
-      <h3 id="support-title">Support & Help</h3>
-      <p class="small">Choose how you want to contact us or open live support.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-        <button class="btn-primary" onclick="openWhatsApp()">Open WhatsApp</button>
-        <button class="btn-ghost" onclick="openGmailCompose()">Open Gmail compose</button>
-        <button class="btn-ghost" onclick="openMailTo()">Open default mail client</button>
-        <a class="btn-ghost" href="terms.html">Terms & Recommendations</a>
-      </div>
-      <div style="margin-top:12px" class="small">(WhatsApp opens in a new tab; Gmail opens Gmail compose if logged in.)</div>
-    </div>
-  </div>
-
-  <!-- Contact modal with direct links too -->
-  <div id="modal-contact" class="modal-overlay" aria-hidden="true">
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="contact-title">
-      <button class="close-btn" onclick="closeModal('modal-contact')" aria-label="Close">✕</button>
-      <h3 id="contact-title">Contact</h3>
-      <p class="small">Choose one of the options below to send us a message.</p>
-      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
-        <button class="btn-primary" onclick="openWhatsApp()">Message on WhatsApp</button>
-        <button class="btn-ghost" onclick="openGmailCompose()">Compose in Gmail</button>
-        <button class="btn-ghost" onclick="openMailTo()">Open default mail app</button>
-      </div>
-    </div>
-  </div>
-
-  
-  <script src="app.js"></script>
-
-  <script>
-(function() {
-  const translations = {
-    "Home": "Inicio",
-    "Meet the team": "Conoce al equipo",
-    "Benefits": "Beneficios",
-    "Plans": "Planes",
-    "Simulator": "Simulador",
-    "Videos": "Videos",
-    "Sign in": "Iniciar sesión",
-    "Subscribe": "Suscribirse",
-    "New • Fast microinsurance": "Nuevo • Microseguro rápido",
-    "Protect what matters during your university life": "Protege lo que importa durante tu vida universitaria",
-    "Quick, affordable microinsurance for students and parents. Easy signup, photo-based claims, and fast support.": "Microseguro rápido y accesible para estudiantes y padres. Registro fácil, reclamos con foto y soporte rápido.",
-    "View Plans": "Ver planes",
-    "Simulate Premium": "Simular prima",
-    "Fast claims": "Reclamos rápidos",
-    "Automatic decisions for minor incidents.": "Decisiones automáticas para incidentes menores.",
-    "Flexible plans": "Planes flexibles",
-    "Student-friendly prices and coverage.": "Precios y cobertura amigables para estudiantes.",
-    "Affordable protection": "Protección asequible",
-    "Plans designed for student budgets with clear coverage limits and no hidden costs.": "Planes diseñados para presupuestos estudiantiles con límites claros y sin costos ocultos.",
-    "Quick online claims": "Reclamos en línea rápidos",
-    "Submit a photo and details — get an automated decision for small claims or human review when needed.": "Envía una foto y detalles — recibe una decisión automática para reclamos pequeños o revisión humana si es necesario.",
-    "Digital peace of mind": "Tranquilidad digital",
-    "Manage policies, claims, and contact support through the app and web portal.": "Gestiona pólizas, reclamos y contacto con soporte a través de la app y portal web.",
-    "Basic Plan": "Plan Básico",
-    "Essential coverage for gadgets, backpack and basic assistance.": "Cobertura esencial para gadgets, mochila y asistencia básica.",
-    "Small-theft protection": "Protección contra pequeños robos",
-    "Photo claims": "Reclamos con foto",
-    "Basic teleconsult support": "Soporte básico de teleconsulta",
-    "Premium Plan": "Plan Premium",
-    "Higher coverage limits and priority claim handling.": "Límites de cobertura más altos y manejo prioritario de reclamos.",
-    "Higher limits per incident": "Límites más altos por incidente",
-    "Priority processing": "Procesamiento prioritario",
-    "Partial damage reimbursement": "Reembolso parcial por daños",
-    "Not sure yet?": "¿Aún no estás seguro?",
-    "Try the simulator or contact support": "Prueba el simulador o contacta soporte",
-    "Quick simulator": "Simulador rápido",
-    "Item value (S/)": "Valor del ítem (S/)",
-    "Choose plan": "Elegir plan",
-    "Duration (months)": "Duración (meses)",
-    "Calculate": "Calcular",
-    "Reset": "Reiniciar",
-    "About the Product": "Acerca del Producto",
-    "How Claims Work": "Cómo funcionan los reclamos",
-    "About the Team": "Acerca del Equipo",
-    "Testimonials": "Testimonios",
-    "I filed a claim and it was processed under 48 hours. Easy and fast.": "Presenté un reclamo y fue procesado en menos de 48 horas. Fácil y rápido.",
-    "Knowing my children are protected gives me peace of mind.": "Saber que mis hijos están protegidos me da tranquilidad.",
-    "Signup is simple and mobile-friendly.": "El registro es sencillo y amigable con móviles.",
-    "I have a claim": "Tengo un reclamo",
-    "Submit your claim with a photo. Simple claims get automatic decisions.": "Envía tu reclamo con una foto. Los reclamos simples obtienen decisiones automáticas.",
-    "Support & Contact": "Soporte y Contacto",
-    "Click for live support or contact options.": "Haz clic para soporte en vivo o opciones de contacto.",
-    "Product": "Producto",
-    "Company": "Compañía",
-    "Contact": "Contacto",
-    "Terms & recommendations": "Términos y recomendaciones",
-    "Support & Help": "Soporte y ayuda",
-    "Designed for students · Made with ❤️": "Diseñado para estudiantes · Hecho con ❤️",
-    "© 2025 ResiSeguro · All rights reserved": "© 2025 ResiSeguro · Todos los derechos reservados",
-    // agrega más traducciones si es necesario
-  };
-
-  let isEnglish = true;
-
-  // Crear botón
-  const btn = document.createElement("button");
-  btn.innerText = "Translate / Traducir";
-  btn.style.padding = "10px 15px";
-  btn.style.backgroundColor = "#1E3A8A";
-  btn.style.color = "#fff";
-  btn.style.border = "none";
-  btn.style.borderRadius = "5px";
-  btn.style.cursor = "pointer";
-  btn.style.fontSize = "14px";
-  btn.style.display = "inline-block";
-  btn.style.margin = "12px 20px"; // margen para que esté abajo del header
-
-  // Función para traducir
-  function translatePage() {
-    const elements = document.querySelectorAll("body *:not(script):not(style):not(iframe):not(button):not(input):not(textarea)");
-    elements.forEach(el => {
-      if (el.children.length === 0 && el.innerText.trim() !== "") {
-        const key = el.innerText.trim();
-        if (isEnglish) {
-          el.innerText = translations[key] || el.innerText;
-        } else {
-          // traducir de vuelta a inglés buscando la clave por valor
-          const original = Object.keys(translations).find(k => translations[k] === el.innerText);
-          if (original) el.innerText = original;
-        }
-      }
-    });
-    isEnglish = !isEnglish;
-  }
-
-  btn.addEventListener("click", translatePage);
-
-  // Insertar botón debajo del header
-  const header = document.querySelector("header");
-  header.parentNode.insertBefore(btn, header.nextSibling);
-})();
-</script>
-
+    <script src="./js/utils/constants.js"></script>
+    <script src="./js/utils/helpers.js"></script>
+    <script src="./js/utils/shared.js"></script>
+    <script src="./js/modules/language.js"></script>
+    <script src="./js/modules/navigation.js"></script>
+    <script src="./js/modules/animations.js"></script>
+    <script src="./js/modules/auth.js"></script>
+    <script src="./js/modules/subscription.js"></script>
+    <script src="./js/modules/simulator.js"></script>
+    <script src="./js/modules/modals.js"></script>
+    <script src="./js/app.js"></script>
 </body>
 </html>
