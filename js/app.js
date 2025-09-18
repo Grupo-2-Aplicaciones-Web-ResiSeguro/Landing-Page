@@ -69,11 +69,11 @@ window.ContactModule = {
                 <div style="display:grid;gap:1rem;margin:1.5rem 0">
                     <div style="padding:1rem;background:var(--gray-100);border-radius:8px">
                         <h4><i class="fas fa-phone" style="color:var(--primary);margin-right:0.5rem"></i>${isEs ? 'Teléfono' : 'Phone'}</h4>
-                        <p>+51 900 000 000</p>
+                        <p>+51989752595</p>
                     </div>
                     <div style="padding:1rem;background:var(--gray-100);border-radius:8px">
                         <h4><i class="fab fa-whatsapp" style="color:var(--success);margin-right:0.5rem"></i>WhatsApp</h4>
-                        <a href="https://wa.me/51900000000" class="btn btn-primary btn-sm" target="_blank">${isEs ? 'Chatear' : 'Chat'}</a>
+                        <a href="https://wa.me/51989752595" class="btn btn-primary btn-sm" target="_blank">${isEs ? 'Chatear' : 'Chat'}</a>
                     </div>
                     <div style="padding:1rem;background:var(--gray-100);border-radius:8px">
                         <h4><i class="fas fa-envelope" style="color:var(--secondary);margin-right:0.5rem"></i>Email</h4>
